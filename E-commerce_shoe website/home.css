@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.topper {
+    background-color: rgb(41, 39, 39);
+    color: white;
+    text-align: center;
+    font-family: Poppins, Arial, "sans-serif";
+    font-size: 12px;
+    font-weight: 700;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.logo_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.logo_holder img {
+    height: 25vh;
+}
+
+.logo_holder .search-box {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.logo_holder .search-box input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.logo_holder .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo_holder .user-actions a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: black;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.logo_holder .user-actions a:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.nav {
+    background-color: rgb(41, 39, 39);
+}
+
+.nav-link {
+    color: white;
+    font-family: Poppins, Arial, "sans-serif";
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nav-link :hover {
+    color: red;
+}
+
+.background img {
+    height: auto;
+    width: 100%;
+}
+
+/* Show dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.seprator {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 18px;
+    margin: 12px auto;
+}
+
+/* Custom CSS for image zoom effect */
+.category img {
+    transition: transform 0.5s ease;
+}
+
+.category:hover img {
+    transform: scale(1.1);
+    
+}
+
+.category button {
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.category button:hover {
+    
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgb(41, 39, 39);
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: red;
+}
+
+/* Hamburger Menu for Mobile */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: rgb(41, 39, 39);
+        padding: 10px;
+    }
+
+    .nav-item {
+        text-align: center;
+    }
+
+    .logo_holder {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo_holder .search-box {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .logo_holder .user-actions {
+        gap: 10px;
+    }
+}
