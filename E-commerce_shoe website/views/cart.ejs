@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIMBERIO - Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/cart.css">
+</head>
+
+<body>
+    <!-- Reuse your existing header from home.html -->
+    <header>
+        <div class="topper">
+            FREE SHIPPING ON ALL ORDERS ABOVE RS.5,000.
+        </div>
+
+        <!-- Logo Holder with Search, Login, Register, and Cart -->
+        <div class="logo_holder">
+            <img src="/Logo.png" alt="RIMBERIO Logo" title="RIMBERIO Logo">
+            <div class="search-box">
+                <input type="text" placeholder="Search..." aria-label="Search">
+            </div>
+            <div class="user-actions">
+                <a href="#" onclick="openModal('loginModal')">Login</a>
+                <a href="#" onclick="openModal('registerModal')">Register</a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+            </div>
+        </div>
+
+        <!-- Responsive Navbar with Hamburger Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <!-- Dropdown Menu for MEN -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">MEN</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sneakers/Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Loafers/Formals</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals/Peshawaris</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for WOMEN -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">WOMEN</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Khushas</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for BOYS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">BOYS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Loafers</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                                <li><a class="dropdown-item" href="#">School Shoes</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for GIRLS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#">GIRLS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                                <li><a class="dropdown-item" href="#">School Shoes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="cart-header">
+                        <h2>Shopping Cart</h2>
+                        <span id="item-count">0 Items</span>
+                    </div>
+
+                    <div class="cart-items">
+                        <% if (cartPro && cartPro.length> 0) { %>
+                            <% cartPro.forEach(product=> { %>
+                                <div class="cart-item" data-id="<%= product.id %>">
+                                    <img src="<%= product.image.startsWith('/') ? product.image : '/uploads/' + product.image %>"
+                                        alt="<%= product.title %>" class="cart-item-img">
+                                    <div class="cart-item-details">
+                                        <h4 class="cart-item-title">
+                                            <%= product.title %>
+                                        </h4>
+                                        <div class="cart-item-price">
+                                            Rs. <%= product.price.toFixed(2) %>
+                                        </div>
+                                        <div class="cart-item-actions">
+                                            <div class="quantity-selector">
+                                                <button class="quantity-btn minus">-</button>
+                                                <input type="number" class="quantity-input" value="1" min="1">
+                                                <button class="quantity-btn plus">+</button>
+                                            </div>
+                                            <form action="/user/cart/delete/<%=product.id%>" method="post">
+                                                <button type="submit" class="btn btn-danger">Remove</button>
+                                            </form>
+                                            <!-- <span class="remove-item">Remove</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                    <% } else { %>
+                                        <div class="empty-cart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <p>Your cart is empty</p>
+                                        </div>
+                                        <% } %>
+                                            <a href="products.html" class="btn btn-dark">Continue Shopping</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">Rs. 0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping">Rs. 0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax</span>
+                                <span id="tax">Rs. 0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="total">Rs. 0.00</span>
+                            </div>
+                        </div>
+                        <button id="checkout-btn" class="btn btn-dark" disabled>Proceed to Checkout</button>
+                        <p class="continue-shopping">
+                            <a href="products.html"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Reuse your existing footer from home.html -->
+    <footer class="text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>About Us</h5>
+                    <p>RIMBERIO is your one-stop destination for the latest trends in footwear. We offer a wide range
+                        of shoes for men, women, and kids.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Men's Collection</a></li>
+                        <li><a href="products.html">Women's Collection</a></li>
+                        <li><a href="products.html">Kids' Collection</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li>Email: rimberio@gmail.com</li>
+                        <li>Phone: +92 123 4567890</li>
+                        <li>Address: 123 Shoe Street, Karachi, Pakistan</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 RIMBERIO. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Login and Registration Modals (same as product page) -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('loginModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" onclick="switchForm('registerModal')">Register here</a></p>
+                <p><a href="#" onclick="openModal('forgotPasswordModal')">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('forgotPasswordModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Forgot Password</h2>
+                <form id="forgotPasswordForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Reset Password</button>
+                </form>
+                <p>Remember your password? <a href="#" onclick="switchForm('loginModal')">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modals -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('registerModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Register</h2>
+                <form>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" onclick="switchForm('loginModal')">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cart.js"></script>
+</body>
+
+</html>

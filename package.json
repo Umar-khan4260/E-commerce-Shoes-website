@@ -1,0 +1,25 @@
+{
+  "name": "e-commerce-shoes-website",
+  "version": "1.0.0",
+  "description": "step by step development of this website full-stack developmenet\r step#1: in first step i design the landing page of website just using HTML & CSS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Umar-khan4260/E-commerce-Shoes-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Umar-khan4260/E-commerce-Shoes-website/issues"
+  },
+  "homepage": "https://github.com/Umar-khan4260/E-commerce-Shoes-website#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2"
+  }
+}

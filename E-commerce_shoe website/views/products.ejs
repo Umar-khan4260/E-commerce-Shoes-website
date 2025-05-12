@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        RIMBERIO - Products
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/products.css">
+
+    <link rel="stylesheet" href="/home.css">
+    <script src="home.js"></script>
+</head>
+
+<body>
+    <!-- Reuse your existing header from home.html -->
+    <header>
+        <div class="topper">
+            FREE SHIPPING ON ALL ORDERS ABOVE RS.5,000.
+        </div>
+
+        <!-- Logo Holder with Search, Login, Register, and Cart -->
+        <div class="logo_holder">
+            <img src="/Logo.png" alt="RIMBERIO Logo" title="RIMBERIO Logo">
+            <div class="search-box">
+                <input type="text" placeholder="Search..." aria-label="Search">
+            </div>
+            <div class="user-actions">
+                <a href="#" onclick="openModal('loginModal')">Login</a>
+                <a href="#" onclick="openModal('registerModal')">Register</a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+
+        <!-- Responsive Navbar with Hamburger Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <!-- Dropdown Menu for MEN -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">MEN</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sneakers/Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Loafers/Formals</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals/Peshawaris</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for WOMEN -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">WOMEN</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Khushas</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for BOYS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">BOYS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Loafers</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                                <li><a class="dropdown-item" href="#">School Shoes</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Menu for GIRLS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#">GIRLS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Chappals</a></li>
+                                <li><a class="dropdown-item" href="#">Sports Shoes</a></li>
+                                <li><a class="dropdown-item" href="#">Sandals</a></li>
+                                <li><a class="dropdown-item" href="#">School Shoes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-page">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Filters Column -->
+                <div class="col-lg-3 col-md-4 filters-column">
+                    <div class="filters-card">
+                        <button class="btn btn-dark filter-toggle d-lg-none">
+                            <i class="fas fa-filter"></i> Filters
+                        </button>
+
+                        <div class="filters-content">
+                            <div class="filter-section">
+                                <h5>Gender</h5>
+                                <div class="filter-options">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="men">
+                                        <label class="form-check-label" for="men">Men</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="women">
+                                        <label class="form-check-label" for="women">Women</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="kids">
+                                        <label class="form-check-label" for="kids">Kids</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h5>Category</h5>
+                                <div class="filter-options">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="all">
+                                        <label class="form-check-label" for="all">All</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="shoes">
+                                        <label class="form-check-label" for="shoes">Shoes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="apparel">
+                                        <label class="form-check-label" for="apparel">Apparel</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="accessories">
+                                        <label class="form-check-label" for="accessories">Accessories</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h5>Price</h5>
+                                <div class="price-range">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="number" class="form-control" placeholder="Min ($)" min="0">
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="number" class="form-control" placeholder="Max ($)" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h5>Size</h5>
+                                <div class="filter-options size-options">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-all">
+                                        <label class="form-check-label" for="size-all">All Sizes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-6">
+                                        <label class="form-check-label" for="size-6">6</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-7">
+                                        <label class="form-check-label" for="size-7">7</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-8">
+                                        <label class="form-check-label" for="size-8">8</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-9">
+                                        <label class="form-check-label" for="size-9">9</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="size-10">
+                                        <label class="form-check-label" for="size-10">10</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-dark apply-filters">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Column -->
+                <div class="col-lg-9 col-md-8 products-column">
+                    <div class="products-header">
+                        <h2>Our Products</h2>
+                    </div>
+
+                    <div class="products-grid">
+                        <% if (products.length> 0) { %>
+                            <% products.forEach(product=> { %>
+                                <div class="product-card">
+                                    <img src="<%= product.image.startsWith('/') ? product.image : '/uploads/' + product.image %>"
+                                        alt="<%= product.title %>">
+                                    <div class="product-info">
+                                        <a href="product-detail/<%=product.id %>">
+                                            <%= product.title %>
+                                        </a>
+                                        <div class="price">
+                                            <span class="current-price">$<%= product.price.toFixed(2) %></span>
+                                        </div>
+                                        <div>
+                                            <form action="cart.html" method="post">
+                                                <button type="submit" class="btn btn-dark add-to-cart"
+                                                    style="color: antiquewhite;">
+                                                    Add to Cart
+                                                </button>
+                                                <input type="hidden" name="id" value="<%=product.id%>">
+                                            </form>
+                                        </div>
+                                        <!-- <button class="btn btn-dark add-to-cart">Add to Cart</button> -->
+                                        <!-- <a href="cart.html" class="btn btn-dark add-to-cart" style="color: antiquewhite;">Add to Cart</a> -->
+                                    </div>
+                                </div>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p>No products available</p>
+                                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Reuse your existing footer from home.html -->
+    <footer class="text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>About Us</h5>
+                    <p>Crazy Shoes is your one-stop destination for the latest trends in footwear. We offer a wide range
+                        of shoes for men, women, and kids.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Men's Collection</a></li>
+                        <li><a href="#">Women's Collection</a></li>
+                        <li><a href="#">Kids' Collection</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li>Email: crazyshoes@gmail.com</li>
+                        <li>Phone: +92 123 4567890</li>
+                        <li>Address: 123 Shoe Street, Karachi, Pakistan</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Crazy Shoes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Login and Registration Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('loginModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" onclick="switchForm('registerModal')">Register here</a></p>
+                <p><a href="#" onclick="openModal('forgotPasswordModal')">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('forgotPasswordModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Forgot Password</h2>
+                <form id="forgotPasswordForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Reset Password</button>
+                </form>
+                <p>Remember your password? <a href="#" onclick="switchForm('loginModal')">Login here</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Registration Modals -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('registerModal')" class="close">&times;</span>
+            <div class="form-container">
+                <h2>Register</h2>
+                <form>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" onclick="switchForm('loginModal')">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="products.js"></script>
+</body>
+
+</html>
