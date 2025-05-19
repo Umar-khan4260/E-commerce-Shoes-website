@@ -19,6 +19,9 @@ userRouter.get('/product-detail/:proId', userController.getProductDetail);
 
 userRouter.post('/cart/delete/:proId',userController.deleteCartItem)
 
+userRouter.post('/products.html',userController.saveOrders)
+
+userRouter.get('/checkout', userController.checkoutApi);
 
 
 

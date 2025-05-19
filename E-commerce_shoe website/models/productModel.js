@@ -7,6 +7,7 @@ const { getDB } = require('../utils/databaseUtils');
 
 module.exports = class Product {
     constructor(id, title, category, brand, price, stock, sizes = [], status, description, image) {
+        
         this.id = id;
         this.title = title;
         this.category = category;
@@ -20,7 +21,15 @@ module.exports = class Product {
     }
     save() {
         const db = getDB();
-        return db.collection('product').insertOne(this);
+        if(this.id){
+            return db.collection("product").updateOne({id:this.id},{$set:this});
+        }
+        else{
+            this.id=Math.random().toString();
+            return db.collection("product").insertOne(this);
+
+        }
+
 
         // Product.fetchAll((products) => {
 
@@ -44,36 +53,43 @@ module.exports = class Product {
         // });
 
     }
-    static fetchAll(callback) {
-        const dataPath = path.join(__dirname, '../', 'data', 'product.json');
-        fs.readFile(dataPath, (error, data) => {
-            // callback(!error ? JSON.parse(data) : []);
-            if (!error) {
-                callback(JSON.parse(data));
-            }
-            else {
-                callback([])
-            }
-        })
+    static fetchAll() {
+        const db = getDB();
+        return db.collection("product").find().toArray();
+        // const dataPath = path.join(__dirname, '../', 'data', 'product.json');
+        // fs.readFile(dataPath, (error, data) => {
+        //     // callback(!error ? JSON.parse(data) : []);
+        //     if (!error) {
+        //         callback(JSON.parse(data));
+        //     }
+        //     else {
+        //         callback([])
+        //     }
+        // })
 
     }
 
-    static findById(productId, callback) {
-        Product.fetchAll(products => {
-            const productFound = products.find(product => product.id === productId);
-            callback(productFound);
-        })
+    static findById(productId) {
+        const db = getDB();
+        return db.collection("product").find({ id: productId }).next();
+
+        // Product.fetchAll(products => {
+        //     const productFound = products.find(product => product.id === productId);
+        //     callback(productFound);
+        // })
     }
 
-    static deleteById(proId, callback) {
-        Product.fetchAll((products) => {
-            products = products.filter(product => product.id !== proId);
-            const dataPath = path.join(__dirname, '../', 'data', 'product.json');
-            fs.writeFile(dataPath, JSON.stringify(products), error => {
-                Cart.deleteById(products, callback);
-            });
+    static deleteById(proId) {
+         const db = getDB();
+        return db.collection("product").deleteOne({ id: proId });
+        // Product.fetchAll((products) => {
+        //     products = products.filter(product => product.id !== proId);
+        //     const dataPath = path.join(__dirname, '../', 'data', 'product.json');
+        //     fs.writeFile(dataPath, JSON.stringify(products), error => {
+        //         Cart.deleteById(products, callback);
+        //     });
 
-        });
+        // });
     }
 
 

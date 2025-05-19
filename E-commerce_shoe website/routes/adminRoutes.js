@@ -24,6 +24,7 @@ adminRouter.post('/delete-product/:productId',adminController.postDeleteProduct)
 //handle edit product page get request
 adminRouter.get('/edit-product/:productId', adminController.editProductPage);
 
+
 adminRouter.get('/api/products', adminController.apiProduct);
 
 
